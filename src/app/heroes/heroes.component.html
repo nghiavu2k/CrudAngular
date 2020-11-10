@@ -1,0 +1,44 @@
+<form>
+  <table border="1" style="border-collapse: collapse;">
+    <tr>
+      <td>Id</td>
+      <td><input type="number" [(ngModel)]="idH" name="as"/></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td><input type="text" [(ngModel)]="nameH" name="ass"/></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button type="button" (click)="onClick()">Add</button></td>
+    </tr>
+  </table>
+</form>
+
+<h2>My Bros</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedHero">
+
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
