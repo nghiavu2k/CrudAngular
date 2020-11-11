@@ -5,37 +5,34 @@ import { HEROES } from '../mock-heroes';
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  styleUrls: ['./heroes.component.css'],
 })
-
 export class HeroesComponent implements OnInit {
-
   heroes = HEROES;
   selectedHero: Hero;
-  idH : number;
-  nameH : string;
+  idH: number = HEROES.length;
+  nameH: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  onSelect(hero: Hero): void {
+  edit(hero: Hero): void {
     this.selectedHero = hero;
   }
 
-  onClick(){
+  onClick() {
     HEROES.push({
-      id : this.idH,
-      name : this.nameH
-    })
+      id: this.idH += 1,
+      name: this.nameH,
+    });
+  }
+
+  delete1(id: number) {
+    for (let i = 0; i < this.heroes.length; i++) {
+      if (this.heroes[i].id == id) {
+        this.heroes.splice(i, 1);
+      }
+    }
   }
 }
-
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
